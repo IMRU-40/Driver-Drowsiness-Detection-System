@@ -1,0 +1,173 @@
+<!-- {% load static %}
+<html>
+  <head>
+    <title>Video Live Stream</title>
+  </head>
+  <body>
+    <h1>Video Live Stream</h1>
+    <img src="{% url 'video_feed' %}">
+  </body>
+</html> -->
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>SRSS | Smart Road Saftey System</title>
+
+    <!-- google fonts  -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,600;0,700;0,800;0,900;1,500&family=Ubuntu:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- bootstrap and css code -->
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+      integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="{% static 'detection.css'%}" />
+
+    <!-- fontawesome script -->
+    <script
+      src="https://kit.fontawesome.com/a37f5837a7.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- bootstrap scrit -->
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+      integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <script type="text/javascript">
+      let start = true;
+      function startDetection() {
+        if (start) {
+          document.getElementById("video-feed").src = "{% url 'video_feed' %}";
+          document.getElementById("toggle_button").innerHTML = "Stop Detection";
+        } else {
+          document.getElementById("video-feed").src =
+            "{% static 'profile.png' %}";
+          document.getElementById("toggle_button").innerHTML =
+            "Start Detection";
+        }
+        start = !start;
+      }
+    </script>
+
+    <section id="title">
+      <div class="container-fluid">
+        <!-- Nav Bar -->
+        <nav class="navbar navbar-expand-lg navbar-dark">
+          <a class="navbar-brand" href="{% url 'home'%}">SRSS</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+              {% if user.is_authenticated %}
+              <li class="nav-item">
+                <span class="nav-link">Hello, {{user.first_name}}</span>
+              </li>
+              <!-- <li class="nav-item">
+            <a href="{% url 'detect_drowsiness'%}">Detect Drowsiness</a><br>
+          </li> -->
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'register' %}">Register</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">Login</a>
+              </li>
+              <!-- <li class="nav-item">
+            <a class="nav-link" href="#">Dashboard</a>
+          </li> -->
+              {% endif %}
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <h2>Let's Start Drowsiness Detection</h2>
+      <p>Smarter Way of Safety.</p>
+
+      <div class="row">
+        <div style="margin: auto" class="pricing-col col-lg-6 col-md-6">
+          <div class="card">
+            <div class="card-header">
+              <h3>Input</h3>
+            </div>
+            <div class="card-body">
+              <!-- nachiket code goes here -->
+              <img
+                id="video-feed"
+                src="{% static 'profile.png' %}"
+                class="iocanvas"
+              />
+
+              <button
+                type="button"
+                id="toggle_button"
+                onCLick="startDetection()"
+                class="btn btn-outline-dark btn-lg btn-block"
+              >
+                Start Detection
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+
+    <section id="cta">
+      <h3 class="cta-heading">Hope You Enjoy US.</h3>
+    </section>
+
+    <!-- Footer -->
+
+    <footer id="footer">
+      <i class="fa-brands fa-twitter social-icon"></i>
+      <i class="fa-brands fa-facebook-f social-icon"></i>
+      <i class="fa-brands fa-instagram social-icon"></i>
+      <i class="fa-solid fa-envelope social-icon"></i>
+
+      <p>© Copyright 2023 SRSS</p>
+    </footer>
+  </body>
+</html>
