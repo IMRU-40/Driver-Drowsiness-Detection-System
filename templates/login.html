@@ -1,25 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-</head>
-<body>
-    <form action="login" method="post">
-        {% csrf_token %}
-        <input type="text" name="user_name" placeholder="User Name"><br>
-        <input type="password" name="password" placeholder="Password"><br>
-        <input type="submit">
-    </form>
-    <div>
-        {% for message in messages %}
-            <script>alert('{{message}}')</script>
-        {% endfor %}
-    </div>
-</body>
-</html> -->
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Sign In Form by SRSS</title>
+    <title>DDDS | Login</title>
 
     <link
       rel="stylesheet"
@@ -93,6 +71,18 @@
     ></script>
 
     <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i"
+      rel="stylesheet"
+    />
+
+    <!-- Template Main CSS File -->
+    <link rel="stylesheet" href="{% static 'style_sample.css'%}" />
+    <link
+      rel="stylesheet"
+      href="{% static 'bootstrap/css/bootstrap.min.css'%}"
+    />
 
     <!-- here the index code end -->
 
@@ -146,55 +136,49 @@
     </script>
   </head>
 
-  <body>
-    <section id="title">
+  <body style="background-color: #f7f4f4">
+    <section id="title" style="background-color: #f7f4f4">
       <div class="container-fluid">
-        <!-- Nav Bar -->
-        <nav class="navbar navbar-expand-lg navbar-dark">
-          <a class="navbar-brand" href="{% url 'home'%}">SRSS</a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
+        <!-- ======= Header ======= -->
+        <header id="header" class="fixed-top">
+          <div
+            class="d-flex align-items-center justify-content-between"
+            style="margin-left: 150px"
           >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-              {% if user.is_authenticated %}
-              <li class="nav-item">
-                <span class="nav-link">Hello, {{user.first_name}}</span>
-              </li>
-              <!-- <li class="nav-item">
-            <a href="{% url 'detect_drowsiness'%}">Detect Drowsiness</a><br>
-          </li> -->
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-              </li>
-              {% else %}
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'register' %}">Register</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'login' %}">Login</a>
-              </li>
-              <!-- <li class="nav-item">
-            <a class="nav-link" href="#">Dashboard</a>
-          </li> -->
-              {% endif %}
-            </ul>
+            <a href="{% url 'home'%}l" class=""
+              ><img
+                src="{% static 'logo1.jpg'%}"
+                alt=""
+                class=""
+                width="140px"
+                height="47px"
+            /></a>
+            <!--<h1 class="logo"><a href="index.html">DDDS</a></h1> -->
+            <nav id="navbar" class="navbar" style="margin-right: 140px">
+              <ul>
+                <li>
+                  <a class="nav-link scrollto active" href="{% url 'home'%}"
+                    >Home</a
+                  >
+                </li>
+                <li>
+                  <a class="nav-link scrollto" href="{% url 'register' %}"
+                    >Register</a
+                  >
+                </li>
+              </ul>
+              <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav>
+            <!-- .navbar -->
           </div>
-        </nav>
+        </header>
+        <!-- End Header -->
       </div>
     </section>
 
-    <div class="main">
+    <div class="main" style="background-color: #f7f4f4">
       <section class="sign-in">
-        <div class="container">
+        <div class="container" style="width: 60%">
           <div class="signin-content">
             <div class="signin-image">
               <figure>
@@ -287,5 +271,28 @@
       data-cf-beacon='{"rayId":"6d72534a9f8a85ba","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2021.12.0","si":100}'
       crossorigin="anonymous"
     ></script>
+
+    <footer id="footer">
+      <div class="copyright" style="margin-left: 50px; margin-right: 90px">
+        &copy; Copyright
+        <strong><span>Driver Drowsiness Detection System</span></strong
+        >. All Rights Reserved
+      </div>
+      <div class="credits" style="margin-left: 90px; margin-right: 90px">
+        Designed by <a href="#">ImRu Team</a>
+      </div>
+    </footer>
+    <!-- End Footer -->
+
+    <a
+      href="#"
+      class="back-to-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
+
+    <!-- Template Main JS File -->
+    <script src="{% static 'main_sample.js'%}"></script>
+
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js'%}"></script>
   </body>
 </html>
