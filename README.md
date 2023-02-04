@@ -10,3 +10,4 @@
 1. Clone/download repository in local machine.
 2. Open the terminal in the project repository.
 3. Run the command: py manage.py runserver
+4. Click on the link visible in the terminal.
