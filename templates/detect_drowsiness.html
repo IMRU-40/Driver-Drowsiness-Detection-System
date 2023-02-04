@@ -104,7 +104,9 @@
               <ul>
                 {% if user.is_authenticated %}
                 <li>
-                  <span class="text-uppercase">Hello, {{user.first_name}}</span>
+                  <span class="text-uppercase text-black"
+                    >Hello, {{user.first_name}}</span
+                  >
                 </li>
                 <li>
                   <a class="nav-link scrollto active" href="{% url 'logout' %}"
