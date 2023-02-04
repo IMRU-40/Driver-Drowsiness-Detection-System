@@ -103,23 +103,12 @@
             >
               <ul>
                 {% if user.is_authenticated %}
-                <li class="nav-item">
-                  <span class="nav-link">Hello, {{user.first_name}}</span>
+                <li>
+                  <span class="text-uppercase">Hello, {{user.first_name}}</span>
                 </li>
                 <li>
-                  <a class="nav-link scrollto" href="{% url 'logout' %}"
+                  <a class="nav-link scrollto active" href="{% url 'logout' %}"
                     >Logout</a
-                  >
-                </li>
-                {% else %}
-                <li>
-                  <a class="nav-link scrollto" href="{% url 'register' %}"
-                    >Register</a
-                  >
-                </li>
-                <li>
-                  <a class="nav-link scrollto" href="{% url 'login' %}"
-                    >Login</a
                   >
                 </li>
                 {% endif %}
