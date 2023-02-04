@@ -12,14 +12,13 @@
       href="{% static 'material-icon/css/material-design-iconic-font.min.css' %}"
     />
 
-    <!-- font aweson and bootstap5 -->
+    <!-- font awesome and bootstap5 -->
 
     <script
       src="https://kit.fontawesome.com/a37f5837a7.js"
       crossorigin="anonymous"
     ></script>
 
-   
     <!-- google fonts  -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -82,51 +81,6 @@
     />
 
     <meta name="robots" content="noindex, follow" />
-    <script>
-      (function (w, d) {
-        !(function (a, e, t, r, z) {
-          (a.zarazData = a.zarazData || {}),
-            (a.zarazData.executed = []),
-            (a.zarazData.tracks = []),
-            (a.zaraz = {
-              deferred: [],
-            });
-          var s = e.getElementsByTagName("title")[0];
-          (a.zarazData.c = e.cookie),
-            s && (a.zarazData.t = e.getElementsByTagName("title")[0].text),
-            (a.zarazData.w = a.screen.width),
-            (a.zarazData.h = a.screen.height),
-            (a.zarazData.j = a.innerHeight),
-            (a.zarazData.e = a.innerWidth),
-            (a.zarazData.l = a.location.href),
-            (a.zarazData.r = e.referrer),
-            (a.zarazData.k = a.screen.colorDepth),
-            (a.zarazData.n = e.characterSet),
-            (a.zarazData.o = new Date().getTimezoneOffset()), //
-            (a.dataLayer = a.dataLayer || []),
-            (a.zaraz.track = (e, t) => {
-              for (key in (a.zarazData.tracks.push(e), t))
-                a.zarazData["z_" + key] = t[key];
-            }),
-            (a.zaraz._preSet = []),
-            (a.zaraz.set = (e, t, r) => {
-              (a.zarazData["z_" + e] = t), a.zaraz._preSet.push([e, t, r]);
-            }),
-            a.dataLayer.push({
-              "zaraz.start": new Date().getTime(),
-            }),
-            a.addEventListener("DOMContentLoaded", () => {
-              var t = e.getElementsByTagName(r)[0],
-                z = e.createElement(r);
-              (z.defer = !0),
-                (z.src =
-                  "/cdn-cgi/zaraz/s.js?z=" +
-                  btoa(encodeURIComponent(JSON.stringify(a.zarazData)))),
-                t.parentNode.insertBefore(z, t);
-            });
-        })(w, d, 0, "script");
-      })(window, document);
-    </script>
   </head>
 
   <body style="background-color: #f7f4f4">
@@ -146,7 +100,6 @@
                 width="140px"
                 height="47px"
             /></a>
-            <!--<h1 class="logo"><a href="index.html">DDDS</a></h1> -->
             <nav id="navbar" class="navbar" style="margin-right: 140px">
               <ul>
                 <li>
@@ -212,11 +165,6 @@
                     id="your_pass"
                   />
                 </div>
-                <div class="form-group">
-                  <!-- <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" /> -->
-                  <!-- <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" /> -->
-                  <!-- <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label> -->
-                </div>
                 <div class="form-group form-button">
                   <input
                     type="submit"
@@ -244,20 +192,6 @@
     <script src="{% static 'main.js'%}"></script>
 
     <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-
-      gtag("config", "UA-23581568-13");
-    </script>
-    <script
       defer
       src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194"
       integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw=="
@@ -277,14 +211,14 @@
     </footer>
     <!-- End Footer -->
     <a
-    href="#"
-    class="back-to-top d-flex align-items-center justify-content-center"
-    ><i class="bi bi-arrow-up-short"></i></a>
+      href="#"
+      class="back-to-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
 
     <!-- Template Main JS File -->
     <script src="{% static 'main_sample.js'%}"></script>
 
     <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js'%}"></script>
-    
   </body>
 </html>

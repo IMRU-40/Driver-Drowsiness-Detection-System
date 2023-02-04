@@ -44,17 +44,16 @@
             width="140px"
             height="47px"
         /></a>
-        <!--<h1 class="logo"><a href="index.html">DDDS</a></h1> -->
         <nav id="navbar" class="navbar">
           <ul>
             {% if user.is_authenticated and user.is_superuser%}
             <li>
-              <a class="nav-link scrollto active" href="#"
-                >Hello, {{user.first_name}}</a
-              >
+              <span class="text-uppercase">Hello, {{user.first_name}}</span>
             </li>
             <li>
-              <a class="nav-link scrollto" href="{% url 'generate_hist'%}"
+              <a
+                class="nav-link scrollto active"
+                href="{% url 'generate_hist'%}"
                 >Dashboard</a
               >
             </li>
@@ -63,12 +62,12 @@
             </li>
             {% elif user.is_authenticated %}
             <li>
-              <a class="nav-link scrollto active" href="#"
-                >Hello, {{user.first_name}}</a
-              >
+              <span class="text-uppercase">Hello, {{user.first_name}}</span>
             </li>
             <li>
-              <a class="nav-link scrollto" href="{% url 'logout' %}">Logout</a>
+              <a class="nav-link scrollto active" href="{% url 'logout' %}"
+                >Logout</a
+              >
             </li>
             {% else %}
             <li>

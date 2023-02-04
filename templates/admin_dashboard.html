@@ -142,179 +142,183 @@
     <link rel="stylesheet" href="{% static 'style_sample.css'%}" />
     <link
       rel="stylesheet"
-      href="{% static 'bootstrap/css/bootstrap.min.css'%}"/>
+      href="{% static 'bootstrap/css/bootstrap.min.css'%}"
+    />
 
-      <style>
-
-        .nav-link{
-          color: black;
-          font-size: 18px;
-          padding-top: 28px;
-          font-weight: 500;
-        }
-      </style>
+    <style>
+      .nav-link {
+        color: black;
+        font-size: 18px;
+        padding-top: 28px;
+        font-weight: 500;
+      }
+    </style>
   </head>
 
-  
-    <script>
-      $(document).ready(function(){
-          const ctx = document.getElementById('myChart').getContext('2d');
-          const myChart = new Chart(ctx, {
-              type: 'bar',
-              data: {
-                  labels: [{% for i in x %}'{{i}}',{% endfor %}],
-                  datasets: [{
-                      label: 'Number of times drowsiness detected',
-                      data: [{% for i in y %}'{{i}}',{% endfor %}],
-
-                      backgroundColor: "rgba(27, 113, 250, 0.2)", //version >2 useus background color
-                      borderColor: "rgba(3, 63, 158, 1)",
-                      borderWidth: 1,
-                      borderRadius: 5
-                  }]
-              },
-              options: {
-                  responsive: true,
-                  maintainAspectRatio: true,
-                  scales: {
-                      yAxes: [{
-                          ticks:{
-                              beginAtZero: true,
-                              stepSize: 1
-                          }
-                      }],
-
-                      xAxes: [{
-                          barPercentage: 0.5,
-                          categoryPercentage: 1,
-                      }]
-                  },
-                  legend: {
-                      position: 'top',
-                  },
-                  title: {
-                      display: true,
-                      text: 'Drowsiness History per User'
-                  }
-              }
-          });
-          const ctx1 = document.getElementById('myChart1').getContext('2d');
-          const myChart1 = new Chart(ctx1, {
-              type: 'line',
-              data: {
-                  labels: [{% for i in x1 %}'{{i}}',{% endfor %}],
-                  datasets: [{
-                      label: 'Drowsiness Detected ',
-                      data: [{% for i in y1 %}'{{i}}',{% endfor %}],
-                      borderColor: "#3e95cd",
-                      fill: false
-                  }]
-              },
-              options: {
-                  responsive: true,
-                  maintainAspectRatio: true,
-                  scales: {
-                      yAxes: [{
-                          ticks:{
-                              beginAtZero: true,
-                              stepSize: 1
-                          }
-                      }],
-                  },
-                  legend: {
-                      position: 'top',
-                  },
-                  title: {
-                      display: true,
-                      text: 'Drowsiness History by date'
-                  }
-              }
-          });
-          const ctx2 = document.getElementById('myChart2').getContext('2d');
-          const myChart2=new Chart(ctx2, {
-              type: 'pie',
-              data: {
-                labels: [{% for i in x2 %}'{{i}}',{% endfor %}],
+  <script>
+    $(document).ready(function(){
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [{% for i in x %}'{{i}}',{% endfor %}],
                 datasets: [{
-                  label: "Population (millions)",
-                  backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-                  data: [{% for i in y2 %}'{{i}}',{% endfor %}]
+                    label: 'Number of times drowsiness detected',
+                    data: [{% for i in y %}'{{i}}',{% endfor %}],
+
+                    backgroundColor: "rgba(27, 113, 250, 0.2)", //version >2 useus background color
+                    borderColor: "rgba(3, 63, 158, 1)",
+                    borderWidth: 1,
+                    borderRadius: 5
                 }]
-              },
-              options: {
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                scales: {
+                    yAxes: [{
+                        ticks:{
+                            beginAtZero: true,
+                            stepSize: 1
+                        }
+                    }],
+
+                    xAxes: [{
+                        barPercentage: 0.5,
+                        categoryPercentage: 1,
+                    }]
+                },
+                legend: {
+                    position: 'top',
+                },
                 title: {
-                  display: true,
-                  text: 'Drowsiness Detection Time'
+                    display: true,
+                    text: 'Drowsiness History per User'
                 }
+            }
+        });
+        const ctx1 = document.getElementById('myChart1').getContext('2d');
+        const myChart1 = new Chart(ctx1, {
+            type: 'line',
+            data: {
+                labels: [{% for i in x1 %}'{{i}}',{% endfor %}],
+                datasets: [{
+                    label: 'Drowsiness Detected ',
+                    data: [{% for i in y1 %}'{{i}}',{% endfor %}],
+                    borderColor: "#3e95cd",
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                scales: {
+                    yAxes: [{
+                        ticks:{
+                            beginAtZero: true,
+                            stepSize: 1
+                        }
+                    }],
+                },
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Drowsiness History by date'
+                }
+            }
+        });
+        const ctx2 = document.getElementById('myChart2').getContext('2d');
+        const myChart2=new Chart(ctx2, {
+            type: 'pie',
+            data: {
+              labels: [{% for i in x2 %}'{{i}}',{% endfor %}],
+              datasets: [{
+                label: "Population (millions)",
+                backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+                data: [{% for i in y2 %}'{{i}}',{% endfor %}]
+              }]
+            },
+            options: {
+              title: {
+                display: true,
+                text: 'Drowsiness Detection Time'
               }
-          });
-      });
-    </script>
+            }
+        });
+    });
+  </script>
 
+  <body style="background-color: #f7f4f4">
+    <div class="container-fluid-title" style="margin-top: 13px">
+      <header id="header" class="fixed-top">
+        <div
+          class="container d-flex align-items-center justify-content-between"
+        >
+          <a href="{% url 'home'%}" class=""
+            ><img
+              src="{% static 'logo1.jpg'%}"
+              alt=""
+              class=""
+              width="140px"
+              height="47px"
+          /></a>
+          <nav
+            id="navbar"
+            class="navbar"
+            style="background-color: white; margin-bottom: 0px"
+          >
+            <ul>
+              {% if user.is_authenticated and user.is_superuser%}
+              <li>
+                <span class="text-uppercase">Hello, {{user.first_name}}</span>
+              </li>
+              <li>
+                <a
+                  class="nav-link scrollto active"
+                  href="{% url 'generate_hist'%}"
+                  >Dashboard</a
+                >
+              </li>
+              <li>
+                <a class="nav-link scrollto" href="{% url 'logout' %}"
+                  >Logout</a
+                >
+              </li>
+              {% elif user.is_authenticated %}
+              <li>
+                <span class="nav-link scrollto"
+                  >Hello, {{user.first_name}}</span
+                >
+              </li>
+              <li>
+                <a class="nav-link scrollto" href="{% url 'logout' %}"
+                  >Logout</a
+                >
+              </li>
+              {% else %}
+              <li>
+                <a class="nav-link scrollto" href="{% url 'register' %}"
+                  >Register</a
+                >
+              </li>
+              <li>
+                <a class="nav-link scrollto" href="{% url 'login' %}">Login</a>
+              </li>
+              {% endif %}
+            </ul>
 
-    
-<body style="background-color: #f7f4f4">
-
-  <div class="container-fluid-title" style="margin-top: 13px;">
-  <header id="header" class="fixed-top">
-      <div class="container d-flex align-items-center justify-content-between">
-        <a href="{% url 'home'%}" class=""
-          ><img
-            src="{% static 'logo1.jpg'%}"
-            alt=""
-            class=""
-            width="140px"
-            height="47px"
-        /></a>
-        <!--<h1 class="logo"><a href="index.html">DDDS</a></h1> -->
-        <nav id="navbar" class="navbar" style="background-color: white; margin-bottom: 0px;">
-          <ul>
-            {% if user.is_authenticated and user.is_superuser%}
-            <li>
-              
-              <span class="">Hello, {{user.first_name}}</span>
-            </li>
-            <li>
-              <a class="nav-link scrollto active" href="{% url 'generate_hist'%}"
-                >Dashboard</a
-              >
-            </li>
-            <li>
-              <a class="nav-link scrollto" href="{% url 'logout' %}">Logout</a>
-            </li>
-            {% elif user.is_authenticated %}
-            <li>
-              <span class="nav-link scrollto">Hello, {{user.first_name}}</span>
-            </li>
-            <!-- <li class="nav-item">
-              <a href="{% url 'detect_drowsiness'%}">Detect Drowsiness</a><br>
-            </li> -->
-            <li>
-              <a class="nav-link scrollto" href="{% url 'logout' %}">Logout</a>
-            </li>
-            {% else %}
-            <li>
-              <a class="nav-link scrollto" href="{% url 'register' %}">Register</a>
-            </li>
-            <li>
-              <a class="nav-link scrollto" href="{% url 'login' %}">Login</a>
-            </li>
-            <!-- <li class="nav-item">
-              <a class="nav-link" href="#">Dashboard</a>
-            </li> -->
-            {% endif %}
-          </ul>
-          
-          <i class="bi bi-list mobile-nav-toggle"></i>
-        </nav>
-        <!-- .navbar -->
-      </div>
-    </header>
-    <!-- End Header -->
+            <i class="bi bi-list mobile-nav-toggle"></i>
+          </nav>
+          <!-- .navbar -->
+        </div>
+      </header>
+      <!-- End Header -->
     </div>
 
-    <div style="background-color: white; margin-top: 0px; padding-top: 0px;">
-      <div class="row" style=" margin-top: 0px; padding-top: 0px;">
+    <div style="background-color: white; margin-top: 0px; padding-top: 0px">
+      <div class="row" style="margin-top: 0px; padding-top: 0px">
         <nav
           id="sidebarMenu"
           class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"
@@ -322,7 +326,11 @@
           <div class="position-sticky pt-3">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link scrollto active" aria-current="page" href="#" >
+                <a
+                  class="nav-link scrollto active"
+                  aria-current="page"
+                  href="#"
+                >
                   <span data-feather="home"></span>
                   Dashboard
                 </a>
@@ -431,14 +439,12 @@
     <a
       href="#"
       class="back-to-top d-flex align-items-center justify-content-center"
-      ><i class="bi bi-arrow-up-short"></i></a>
-      
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
 
     <!-- Template Main JS File -->
     <script src="{% static 'main_sample.js'%}"></script>
 
     <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js'%}"></script>
-    
-  
   </body>
 </html>

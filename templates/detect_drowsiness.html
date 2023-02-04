@@ -1,4 +1,3 @@
-
 {% load static %}
 <!DOCTYPE html>
 <html>
@@ -34,9 +33,10 @@
     <link rel="stylesheet" href="{% static 'style_sample.css'%}" />
     <link
       rel="stylesheet"
-      href="{% static 'bootstrap/css/bootstrap.min.css'%}"/>
+      href="{% static 'bootstrap/css/bootstrap.min.css'%}"
+    />
 
-      <link
+    <link
       rel="stylesheet"
       href="{% static 'bootstrap-icons/bootstrap-icons.css'%}"
     />
@@ -66,7 +66,7 @@
     ></script>
   </head>
 
-  <body>
+  <body style="background-color: #f7f4f4">
     <script type="text/javascript">
       let start = true;
       function startDetection() {
@@ -82,54 +82,56 @@
         start = !start;
       }
     </script>
-
-
-<body style="background-color: #f7f4f4">
-  <section id="title">
-  <div class="container-fluid-title" style="margin-top: 13px;">
-  <header id="header" class="fixed-top">
-      <div class="container d-flex align-items-center justify-content-between">
-        <a href="{% url 'home'%}" class=""
-          ><img
-            src="{% static 'logo1.jpg'%}"
-            alt=""
-            class=""
-            width="140px"
-            height="47px"
-        /></a>
-        <!--<h1 class="logo"><a href="index.html">DDDS</a></h1> -->
-        <nav id="navbar" class="navbar" style="background-color: white; margin-bottom: 0px;">
-          <ul>
-            {% if user.is_authenticated %}
-            <li class="nav-item">
-              <span class="nav-link">Hello, {{user.first_name}}</span>
-            </li>
-            <!-- <li class="nav-item">
-          <a href="{% url 'detect_drowsiness'%}">Detect Drowsiness</a><br>
-        </li> -->
-            </li>
-              <a class="nav-link scrollto" href="{% url 'logout' %}">Logout</a>
-            </li>
-            {% else %}
-            <li>
-              <a class="nav-link scrollto" href="{% url 'register' %}">Register</a>
-            </li>
-            </li>
-              <a class="nav-link scrollto" href="{% url 'login' %}">Login</a>
-            </li>
-            <!-- <li class="nav-item">
-          <a class="nav-link" href="#">Dashboard</a>
-        </li> -->
-            {% endif %}
-      </ul>
-          <i class="bi bi-list mobile-nav-toggle"></i>
-        </nav>
-        <!-- .navbar -->
+    <section id="title">
+      <div class="container-fluid-title" style="margin-top: 13px">
+        <header id="header" class="fixed-top">
+          <div
+            class="container d-flex align-items-center justify-content-between"
+          >
+            <a href="{% url 'home'%}" class=""
+              ><img
+                src="{% static 'logo1.jpg'%}"
+                alt=""
+                class=""
+                width="140px"
+                height="47px"
+            /></a>
+            <nav
+              id="navbar"
+              class="navbar"
+              style="background-color: white; margin-bottom: 0px"
+            >
+              <ul>
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                  <span class="nav-link">Hello, {{user.first_name}}</span>
+                </li>
+                <li>
+                  <a class="nav-link scrollto" href="{% url 'logout' %}"
+                    >Logout</a
+                  >
+                </li>
+                {% else %}
+                <li>
+                  <a class="nav-link scrollto" href="{% url 'register' %}"
+                    >Register</a
+                  >
+                </li>
+                <li>
+                  <a class="nav-link scrollto" href="{% url 'login' %}"
+                    >Login</a
+                  >
+                </li>
+                {% endif %}
+              </ul>
+              <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav>
+            <!-- .navbar -->
+          </div>
+        </header>
+        <!-- End Header -->
       </div>
-    </header>
-    <!-- End Header -->
-    </div>
-   </section>
+    </section>
 
     <section id="pricing">
       <h2>Let's Start Drowsiness Detection</h2>
@@ -142,7 +144,6 @@
               <h3>Input</h3>
             </div>
             <div class="card-body">
-              <!-- nachiket code goes here -->
               <img
                 id="video-feed"
                 src="{% static 'profile.png' %}"
@@ -163,9 +164,7 @@
       </div>
     </section>
 
-    
     <!-- Footer -->
-
 
     <footer id="footer">
       <div class="copyright" style="margin-left: 50px; margin-right: 90px">
@@ -180,17 +179,14 @@
     <!-- End Footer -->
 
     <a
-    href="#"
-    class="back-to-top d-flex align-items-center justify-content-center"
-    ><i class="bi bi-arrow-up-short"></i
-  ></a>
-
-  
+      href="#"
+      class="back-to-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
 
     <!-- Template Main JS File -->
     <script src="{% static 'main_sample.js'%}"></script>
 
     <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js'%}"></script>
-    
   </body>
 </html>
