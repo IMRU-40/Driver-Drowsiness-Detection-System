@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
-import re
 
 # Create your views here.
 
@@ -35,6 +34,9 @@ def password_check(passwd):
 
 
 def register(request):
+    if request.user.is_authenticated:
+        return redirect("/")
+
     if(request.method == 'POST'):
         first_name = request.POST["first_name"]
         last_name = request.POST["last_name"]
@@ -63,6 +65,9 @@ def register(request):
 
 
 def login(request):
+    if request.user.is_authenticated:
+        return redirect("/")
+
     if(request.method == 'POST'):
         user_name = request.POST["user_name"]
         password = request.POST["password"]
@@ -79,5 +84,6 @@ def login(request):
 
 
 def logout(request):
-    auth.logout(request)
+    if request.user.is_authenticated:
+        auth.logout(request)
     return redirect("/")
