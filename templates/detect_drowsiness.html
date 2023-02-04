@@ -1,19 +1,10 @@
-<!-- {% load static %}
-<html>
-  <head>
-    <title>Video Live Stream</title>
-  </head>
-  <body>
-    <h1>Video Live Stream</h1>
-    <img src="{% url 'video_feed' %}">
-  </body>
-</html> -->
+
 {% load static %}
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>SRSS | Smart Road Saftey System</title>
+    <title>DDDS | Driver Drowsiness Detection System</title>
 
     <!-- google fonts  -->
 
@@ -33,6 +24,22 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="{% static 'detection.css'%}" />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i"
+      rel="stylesheet"
+    />
+
+    <!-- Template Main CSS File -->
+    <link rel="stylesheet" href="{% static 'style_sample.css'%}" />
+    <link
+      rel="stylesheet"
+      href="{% static 'bootstrap/css/bootstrap.min.css'%}"/>
+
+      <link
+      rel="stylesheet"
+      href="{% static 'bootstrap-icons/bootstrap-icons.css'%}"
+    />
 
     <!-- fontawesome script -->
     <script
@@ -76,50 +83,53 @@
       }
     </script>
 
-    <section id="title">
-      <div class="container-fluid">
-        <!-- Nav Bar -->
-        <nav class="navbar navbar-expand-lg navbar-dark">
-          <a class="navbar-brand" href="{% url 'home'%}">SRSS</a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-              {% if user.is_authenticated %}
-              <li class="nav-item">
-                <span class="nav-link">Hello, {{user.first_name}}</span>
-              </li>
-              <!-- <li class="nav-item">
-            <a href="{% url 'detect_drowsiness'%}">Detect Drowsiness</a><br>
-          </li> -->
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-              </li>
-              {% else %}
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'register' %}">Register</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'login' %}">Login</a>
-              </li>
-              <!-- <li class="nav-item">
-            <a class="nav-link" href="#">Dashboard</a>
-          </li> -->
-              {% endif %}
-            </ul>
-          </div>
+
+<body style="background-color: #f7f4f4">
+  <section id="title">
+  <div class="container-fluid-title" style="margin-top: 13px;">
+  <header id="header" class="fixed-top">
+      <div class="container d-flex align-items-center justify-content-between">
+        <a href="{% url 'home'%}" class=""
+          ><img
+            src="{% static 'logo1.jpg'%}"
+            alt=""
+            class=""
+            width="140px"
+            height="47px"
+        /></a>
+        <!--<h1 class="logo"><a href="index.html">DDDS</a></h1> -->
+        <nav id="navbar" class="navbar" style="background-color: white; margin-bottom: 0px;">
+          <ul>
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <span class="nav-link">Hello, {{user.first_name}}</span>
+            </li>
+            <!-- <li class="nav-item">
+          <a href="{% url 'detect_drowsiness'%}">Detect Drowsiness</a><br>
+        </li> -->
+            </li>
+              <a class="nav-link scrollto" href="{% url 'logout' %}">Logout</a>
+            </li>
+            {% else %}
+            <li>
+              <a class="nav-link scrollto" href="{% url 'register' %}">Register</a>
+            </li>
+            </li>
+              <a class="nav-link scrollto" href="{% url 'login' %}">Login</a>
+            </li>
+            <!-- <li class="nav-item">
+          <a class="nav-link" href="#">Dashboard</a>
+        </li> -->
+            {% endif %}
+      </ul>
+          <i class="bi bi-list mobile-nav-toggle"></i>
         </nav>
+        <!-- .navbar -->
       </div>
-    </section>
+    </header>
+    <!-- End Header -->
+    </div>
+   </section>
 
     <section id="pricing">
       <h2>Let's Start Drowsiness Detection</h2>
@@ -153,21 +163,34 @@
       </div>
     </section>
 
-    <!-- Call to Action -->
-
-    <section id="cta">
-      <h3 class="cta-heading">Hope You Enjoy US.</h3>
-    </section>
-
+    
     <!-- Footer -->
 
-    <footer id="footer">
-      <i class="fa-brands fa-twitter social-icon"></i>
-      <i class="fa-brands fa-facebook-f social-icon"></i>
-      <i class="fa-brands fa-instagram social-icon"></i>
-      <i class="fa-solid fa-envelope social-icon"></i>
 
-      <p>© Copyright 2023 SRSS</p>
+    <footer id="footer">
+      <div class="copyright" style="margin-left: 50px; margin-right: 90px">
+        &copy; Copyright
+        <strong><span>Driver Drowsiness Detection System</span></strong
+        >. All Rights Reserved
+      </div>
+      <div class="credits" style="margin-left: 90px; margin-right: 90px">
+        Designed by <a href="#">ImRu Team</a>
+      </div>
     </footer>
+    <!-- End Footer -->
+
+    <a
+    href="#"
+    class="back-to-top d-flex align-items-center justify-content-center"
+    ><i class="bi bi-arrow-up-short"></i
+  ></a>
+
+  
+
+    <!-- Template Main JS File -->
+    <script src="{% static 'main_sample.js'%}"></script>
+
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+    
   </body>
 </html>

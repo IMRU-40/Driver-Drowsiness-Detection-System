@@ -10,7 +10,7 @@
       content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
     />
     <meta name="generator" content="Hugo 0.88.1" />
-    <title>Dashboard</title>
+    <title>DDDS | Dashboard</title>
 
     <link
       rel="canonical"
@@ -128,9 +128,34 @@
     ></script>
 
     <link rel="stylesheet" href="{% static 'dashboard_styles.css'%}" />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'bootstrap-icons/bootstrap-icons.css'%}"
+    />
+
+    <!-- Template Main CSS File -->
+    <link rel="stylesheet" href="{% static 'style_sample.css'%}" />
+    <link
+      rel="stylesheet"
+      href="{% static 'bootstrap/css/bootstrap.min.css'%}"/>
+
+      <style>
+
+        .nav-link{
+          color: black;
+          font-size: 18px;
+          padding-top: 28px;
+          font-weight: 500;
+        }
+      </style>
   </head>
 
-  <body>
+  
     <script>
       $(document).ready(function(){
           const ctx = document.getElementById('myChart').getContext('2d');
@@ -225,65 +250,71 @@
           });
       });
     </script>
-    <section id="title">
-      <div class="container-fluid-title">
-        <!-- Nav Bar -->
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-          <a class="navbar-brand" href="{% url 'home'%}">SRSS</a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-              {% if user.is_authenticated and user.is_superuser%}
-              <li class="nav-item">
-                <span class="nav-link">Hello, {{user.first_name}}</span>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'generate_hist'%}"
-                  >Dashboard</a
-                >
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-              </li>
-              {% elif user.is_authenticated %}
-              <li class="nav-item">
-                <span class="nav-link">Hello, {{user.first_name}}</span>
-              </li>
-              <!-- <li class="nav-item">
-                <a href="{% url 'detect_drowsiness'%}">Detect Drowsiness</a><br>
-              </li> -->
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-              </li>
-              {% else %}
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'register' %}">Register</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'login' %}">Login</a>
-              </li>
-              <!-- <li class="nav-item">
-                <a class="nav-link" href="#">Dashboard</a>
-              </li> -->
-              {% endif %}
-            </ul>
-          </div>
-        </nav>
-      </div>
-    </section>
 
-    <div>
-      <div class="row">
+
+    
+<body style="background-color: #f7f4f4">
+
+  <div class="container-fluid-title" style="margin-top: 13px;">
+  <header id="header" class="fixed-top">
+      <div class="container d-flex align-items-center justify-content-between">
+        <a href="{% url 'home'%}" class=""
+          ><img
+            src="{% static 'logo1.jpg'%}"
+            alt=""
+            class=""
+            width="140px"
+            height="47px"
+        /></a>
+        <!--<h1 class="logo"><a href="index.html">DDDS</a></h1> -->
+        <nav id="navbar" class="navbar" style="background-color: white; margin-bottom: 0px;">
+          <ul>
+            {% if user.is_authenticated and user.is_superuser%}
+            <li>
+              
+              <span class="">Hello, {{user.first_name}}</span>
+            </li>
+            <li>
+              <a class="nav-link scrollto active" href="{% url 'generate_hist'%}"
+                >Dashboard</a
+              >
+            </li>
+            <li>
+              <a class="nav-link scrollto" href="{% url 'logout' %}">Logout</a>
+            </li>
+            {% elif user.is_authenticated %}
+            <li>
+              <span class="nav-link scrollto">Hello, {{user.first_name}}</span>
+            </li>
+            <!-- <li class="nav-item">
+              <a href="{% url 'detect_drowsiness'%}">Detect Drowsiness</a><br>
+            </li> -->
+            <li>
+              <a class="nav-link scrollto" href="{% url 'logout' %}">Logout</a>
+            </li>
+            {% else %}
+            <li>
+              <a class="nav-link scrollto" href="{% url 'register' %}">Register</a>
+            </li>
+            <li>
+              <a class="nav-link scrollto" href="{% url 'login' %}">Login</a>
+            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link" href="#">Dashboard</a>
+            </li> -->
+            {% endif %}
+          </ul>
+          
+          <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+        <!-- .navbar -->
+      </div>
+    </header>
+    <!-- End Header -->
+    </div>
+
+    <div style="background-color: white; margin-top: 0px; padding-top: 0px;">
+      <div class="row" style=" margin-top: 0px; padding-top: 0px;">
         <nav
           id="sidebarMenu"
           class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"
@@ -291,25 +322,25 @@
           <div class="position-sticky pt-3">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">
+                <a class="nav-link scrollto active" aria-current="page" href="#" >
                   <span data-feather="home"></span>
                   Dashboard
                 </a>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="#myChart">
+                <a class="nav-link scrollto" href="#myChart">
                   <span data-feather="users"></span>Drowsiness History Per User
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#myChart1">
+                <a class="nav-link scrollto" href="#myChart1">
                   <span data-feather="bar-chart-2"></span>
                   Drowsiness History By Date
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#myChart2">
+                <a class="nav-link scrollto" href="#myChart2">
                   <span data-feather="layers"></span>
                   Drowsiness Detection Time
                 </a>
@@ -384,5 +415,30 @@
       crossorigin="anonymous"
     ></script>
     <script src="{% static 'dashboard.js'%}"></script>
+
+    <footer id="footer">
+      <div class="copyright" style="margin-left: 50px; margin-right: 90px">
+        &copy; Copyright
+        <strong><span>Driver Drowsiness Detection System</span></strong
+        >. All Rights Reserved
+      </div>
+      <div class="credits" style="margin-left: 90px; margin-right: 90px">
+        Designed by <a href="#">ImRu Team</a>
+      </div>
+    </footer>
+    <!-- End Footer -->
+
+    <a
+      href="#"
+      class="back-to-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i></a>
+      
+
+    <!-- Template Main JS File -->
+    <script src="{% static 'main_sample.js'%}"></script>
+
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+    
+  
   </body>
 </html>
